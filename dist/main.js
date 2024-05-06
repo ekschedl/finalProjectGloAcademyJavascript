@@ -16,17 +16,27 @@
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_one__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/one */ \"./src/modules/one.js\");\n/* harmony import */ var _modules_two__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/two */ \"./src/modules/two.js\");\n\n\n\n(0,_modules_one__WEBPACK_IMPORTED_MODULE_0__[\"default\"])();\n(0,_modules_two__WEBPACK_IMPORTED_MODULE_1__[\"default\"])();\n\n\n//# sourceURL=webpack://finalprojectgloacademyjavascript/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/modal */ \"./src/modules/modal.js\");\n/* harmony import */ var _modules_two__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/two */ \"./src/modules/two.js\");\n\n\n\n(0,_modules_modal__WEBPACK_IMPORTED_MODULE_0__[\"default\"])();\n(0,_modules_two__WEBPACK_IMPORTED_MODULE_1__[\"default\"])();\n\n\n//# sourceURL=webpack://finalprojectgloacademyjavascript/./src/index.js?");
 
 /***/ }),
 
-/***/ "./src/modules/one.js":
-/*!****************************!*\
-  !*** ./src/modules/one.js ***!
-  \****************************/
+/***/ "./src/modules/helpers.js":
+/*!********************************!*\
+  !*** ./src/modules/helpers.js ***!
+  \********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst oneModule = () => {\n  console.log(\"one\");\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (oneModule);\n\n\n//# sourceURL=webpack://finalprojectgloacademyjavascript/./src/modules/one.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   animate: () => (/* binding */ animate),\n/* harmony export */   fadeIn: () => (/* binding */ fadeIn),\n/* harmony export */   fadeOut: () => (/* binding */ fadeOut)\n/* harmony export */ });\nconst fadeIn = (element, duration = 500) => {\n  const startOpacity = 0;\n  animate({\n    duration,\n    timing: (timeFraction) => timeFraction,\n    draw: (progress) => {\n      element.style.opacity = startOpacity + progress * (1 - startOpacity);\n    },\n  });\n};\n\nconst fadeOut = (element, duration = 500) => {\n  const startOpacity = 1;\n  animate({\n    duration,\n    timing: (timeFraction) => timeFraction,\n    draw: (progress) => {\n      element.style.opacity = startOpacity - progress * startOpacity;\n    },\n    onComplete: () => {\n      element.style.display = \"none\";\n    },\n  });\n};\nconst animate = (options) => {\n  const { duration, timing, draw } = options;\n  const start = performance.now();\n\n  const animateFrame = (time) => {\n    let timeFraction = (time - start) / duration;\n    if (timeFraction > 1) timeFraction = 1;\n\n    let progress = timing(timeFraction);\n\n    draw(progress);\n\n    if (timeFraction < 1) {\n      requestAnimationFrame(animateFrame);\n    }\n  };\n\n  requestAnimationFrame(animateFrame);\n};\n\n\n//# sourceURL=webpack://finalprojectgloacademyjavascript/./src/modules/helpers.js?");
+
+/***/ }),
+
+/***/ "./src/modules/modal.js":
+/*!******************************!*\
+  !*** ./src/modules/modal.js ***!
+  \******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _helpers_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helpers.js */ \"./src/modules/helpers.js\");\n\n\nconst modal = () => {\n  const callbackBtns = document.querySelectorAll(\"a.callback-btn\");\n  const closeButton = document.querySelector(\".modal-close\");\n  const modalOverlay = document.querySelector(\".modal-overlay\");\n  const modalCallback = document.querySelector(\".modal-callback\");\n\n  callbackBtns.forEach((callbackBtn) => {\n    callbackBtn.addEventListener(\"click\", () => {\n      modalCallback.style.display = \"block\";\n      modalOverlay.style.display = \"block\";\n      (0,_helpers_js__WEBPACK_IMPORTED_MODULE_0__.fadeIn)(modalCallback);\n    });\n  });\n\n  closeButton.addEventListener(\"click\", () => {\n    (0,_helpers_js__WEBPACK_IMPORTED_MODULE_0__.fadeOut)(modalCallback);\n    setTimeout(() => {\n      modalOverlay.style.display = \"none\";\n      modalCallback.style.display = \"none\";\n    }, 300);\n  });\n\n  modalOverlay.addEventListener(\"click\", () => {\n    (0,_helpers_js__WEBPACK_IMPORTED_MODULE_0__.fadeOut)(modalCallback);\n    setTimeout(() => {\n      modalOverlay.style.display = \"none\";\n      modalCallback.style.display = \"none\";\n    }, 200);\n  });\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (modal);\n\n\n//# sourceURL=webpack://finalprojectgloacademyjavascript/./src/modules/modal.js?");
 
 /***/ }),
 
