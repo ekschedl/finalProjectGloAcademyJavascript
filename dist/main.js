@@ -16,7 +16,7 @@
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/modal */ \"./src/modules/modal.js\");\n/* harmony import */ var _modules_slider__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/slider */ \"./src/modules/slider.js\");\n\n// import menu from \"./modules/menu\";\n\n\n(0,_modules_modal__WEBPACK_IMPORTED_MODULE_0__[\"default\"])();\n// menu();\n(0,_modules_slider__WEBPACK_IMPORTED_MODULE_1__[\"default\"])();\n\n\n//# sourceURL=webpack://finalprojectgloacademyjavascript/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/modal */ \"./src/modules/modal.js\");\n/* harmony import */ var _modules_menu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/menu */ \"./src/modules/menu.js\");\n/* harmony import */ var _modules_slider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/slider */ \"./src/modules/slider.js\");\n\n\n\n\n(0,_modules_modal__WEBPACK_IMPORTED_MODULE_0__[\"default\"])();\n(0,_modules_menu__WEBPACK_IMPORTED_MODULE_1__[\"default\"])();\n(0,_modules_slider__WEBPACK_IMPORTED_MODULE_2__[\"default\"])();\n\n\n//# sourceURL=webpack://finalprojectgloacademyjavascript/./src/index.js?");
 
 /***/ }),
 
@@ -27,6 +27,16 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _mod
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   animate: () => (/* binding */ animate),\n/* harmony export */   fadeIn: () => (/* binding */ fadeIn),\n/* harmony export */   fadeOut: () => (/* binding */ fadeOut)\n/* harmony export */ });\nconst fadeIn = (element, duration = 500) => {\n  const startOpacity = 0;\n  animate({\n    duration,\n    timing: (timeFraction) => timeFraction,\n    draw: (progress) => {\n      element.style.opacity = startOpacity + progress * (1 - startOpacity);\n    },\n  });\n};\n\nconst fadeOut = (element, duration = 500) => {\n  const startOpacity = 1;\n  animate({\n    duration,\n    timing: (timeFraction) => timeFraction,\n    draw: (progress) => {\n      element.style.opacity = startOpacity - progress * startOpacity;\n    },\n    onComplete: () => {\n      element.style.display = \"none\";\n    },\n  });\n};\nconst animate = (options) => {\n  const { duration, timing, draw } = options;\n  const start = performance.now();\n\n  const animateFrame = (time) => {\n    let timeFraction = (time - start) / duration;\n    if (timeFraction > 1) timeFraction = 1;\n\n    let progress = timing(timeFraction);\n\n    draw(progress);\n\n    if (timeFraction < 1) {\n      requestAnimationFrame(animateFrame);\n    }\n  };\n\n  requestAnimationFrame(animateFrame);\n};\n\n\n//# sourceURL=webpack://finalprojectgloacademyjavascript/./src/modules/helpers.js?");
+
+/***/ }),
+
+/***/ "./src/modules/menu.js":
+/*!*****************************!*\
+  !*** ./src/modules/menu.js ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst menu = () => {\n  document.addEventListener(\"DOMContentLoaded\", () => {\n    const topMenuLinks = document.querySelectorAll(\".top-menu a\");\n\n    topMenuLinks.forEach((link) => {\n      link.addEventListener(\"click\", (e) => {\n        e.preventDefault();\n\n        const targetId = link.getAttribute(\"href\");\n        const targetElement = document.querySelector(targetId);\n        if (targetElement) {\n          targetElement.scrollIntoView({\n            behavior: \"smooth\",\n            block: \"start\",\n          });\n        }\n      });\n    });\n  });\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (menu);\n\n\n//# sourceURL=webpack://finalprojectgloacademyjavascript/./src/modules/menu.js?");
 
 /***/ }),
 
