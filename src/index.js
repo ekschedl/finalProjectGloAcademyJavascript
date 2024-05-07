@@ -1,5 +1,7 @@
 import modal from "./modules/modal";
-import twoModule from "./modules/two";
+// import menu from "./modules/menu";
+import slider from "./modules/slider";
 
 modal();
-twoModule();
+// menu();
+slider();

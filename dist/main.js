@@ -16,7 +16,7 @@
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/modal */ \"./src/modules/modal.js\");\n/* harmony import */ var _modules_two__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/two */ \"./src/modules/two.js\");\n\n\n\n(0,_modules_modal__WEBPACK_IMPORTED_MODULE_0__[\"default\"])();\n(0,_modules_two__WEBPACK_IMPORTED_MODULE_1__[\"default\"])();\n\n\n//# sourceURL=webpack://finalprojectgloacademyjavascript/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/modal */ \"./src/modules/modal.js\");\n/* harmony import */ var _modules_slider__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/slider */ \"./src/modules/slider.js\");\n\n// import menu from \"./modules/menu\";\n\n\n(0,_modules_modal__WEBPACK_IMPORTED_MODULE_0__[\"default\"])();\n// menu();\n(0,_modules_slider__WEBPACK_IMPORTED_MODULE_1__[\"default\"])();\n\n\n//# sourceURL=webpack://finalprojectgloacademyjavascript/./src/index.js?");
 
 /***/ }),
 
@@ -40,13 +40,13 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
-/***/ "./src/modules/two.js":
-/*!****************************!*\
-  !*** ./src/modules/two.js ***!
-  \****************************/
+/***/ "./src/modules/slider.js":
+/*!*******************************!*\
+  !*** ./src/modules/slider.js ***!
+  \*******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst twoModule = () => {\n  console.log(\"two\");\n  console.log(\"three\");\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (twoModule);\n\n\n//# sourceURL=webpack://finalprojectgloacademyjavascript/./src/modules/two.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst slider = () => {\n  const slides = document.querySelectorAll(\".top-slider .item.relative\");\n  let currentSlide = 0;\n  let intervalId;\n\n  const sliderContainer = document.querySelector(\".top-slider\");\n\n  const showSlide = (index) => {\n    slides.forEach((slide, i) => {\n      if (i === index) {\n        slide.style.display = \"block\";\n      } else {\n        slide.style.display = \"none\";\n      }\n    });\n    activateDot(index);\n  };\n\n  const nextSlide = () => {\n    currentSlide = (currentSlide + 1) % slides.length;\n    showSlide(currentSlide);\n  };\n\n  const createDots = () => {\n    const dotsContainer = document.createElement(\"ul\");\n    dotsContainer.classList.add(\"slick-dots\");\n\n    slides.forEach((slide, index) => {\n      const dot = document.createElement(\"li\");\n      dot.classList.add(\"dot\");\n\n      dotsContainer.appendChild(dot);\n\n      if (index === 0) {\n        dot.classList.add(\"slick-active\");\n      }\n    });\n\n    sliderContainer.appendChild(dotsContainer);\n  };\n\n  const activateDot = (index) => {\n    const dots = document.querySelectorAll(\".slick-dots .dot\");\n    dots.forEach((dot, i) => {\n      dot.classList.toggle(\"slick-active\", i === index);\n    });\n  };\n\n  createDots();\n\n  const startAutoSlide = () => {\n    intervalId = setInterval(nextSlide, 3000);\n  };\n\n  const stopAutoSlide = () => {\n    clearInterval(intervalId);\n  };\n\n  sliderContainer.addEventListener(\"mouseenter\", stopAutoSlide);\n  sliderContainer.addEventListener(\"mouseleave\", startAutoSlide);\n\n  startAutoSlide();\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (slider);\n\n\n//# sourceURL=webpack://finalprojectgloacademyjavascript/./src/modules/slider.js?");
 
 /***/ })
 
