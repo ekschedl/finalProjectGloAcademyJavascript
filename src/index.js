@@ -1,5 +1,9 @@
 import modal from "./modules/modal";
-import twoModule from "./modules/two";
+import menu from "./modules/menu";
+import slider from "./modules/slider";
+import accordeon from "./modules/accordeon";
 
 modal();
-twoModule();
+menu();
+slider();
+accordeon();
