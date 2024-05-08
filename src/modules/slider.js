@@ -1,9 +1,10 @@
 const slider = () => {
   const slides = document.querySelectorAll(".top-slider .item.relative");
+  const dots = document.querySelectorAll(".slick-dots .dot");
+  const sliderContainer = document.querySelector(".top-slider");
+
   let currentSlide = 0;
   let intervalId;
-
-  const sliderContainer = document.querySelector(".top-slider");
 
   const showSlide = (index) => {
     slides.forEach((slide, i) => {
@@ -22,43 +23,41 @@ const slider = () => {
   };
 
   const createDots = () => {
-    const dotsContainer = document.createElement("ul");
-    dotsContainer.classList.add("slick-dots");
-
-    slides.forEach((slide, index) => {
-      const dot = document.createElement("li");
-      dot.classList.add("dot");
-
-      dotsContainer.appendChild(dot);
-
-      if (index === 0) {
-        dot.classList.add("slick-active");
-      }
+    dots.forEach((dot, index) => {
+      dot.addEventListener("click", (e) => {
+        e.preventDefault();
+        currentSlide = index;
+        showSlide(currentSlide);
+        resetInterval();
+      });
     });
-
-    sliderContainer.appendChild(dotsContainer);
   };
 
   const activateDot = (index) => {
-    const dots = document.querySelectorAll(".slick-dots .dot");
     dots.forEach((dot, i) => {
       dot.classList.toggle("slick-active", i === index);
     });
   };
 
-  createDots();
-
   const startAutoSlide = () => {
     intervalId = setInterval(nextSlide, 3000);
   };
 
-  const stopAutoSlide = () => {
+  const resetInterval = () => {
     clearInterval(intervalId);
+    startAutoSlide();
   };
 
-  sliderContainer.addEventListener("mouseenter", stopAutoSlide);
-  sliderContainer.addEventListener("mouseleave", startAutoSlide);
+  sliderContainer.addEventListener("mouseenter", () => {
+    clearInterval(intervalId);
+  });
 
+  sliderContainer.addEventListener("mouseleave", () => {
+    resetInterval();
+  });
+
+  showSlide(currentSlide);
+  createDots();
   startAutoSlide();
 };
 
