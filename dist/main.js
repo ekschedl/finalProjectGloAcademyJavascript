@@ -16,7 +16,17 @@
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/modal */ \"./src/modules/modal.js\");\n/* harmony import */ var _modules_menu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/menu */ \"./src/modules/menu.js\");\n/* harmony import */ var _modules_slider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/slider */ \"./src/modules/slider.js\");\n\n\n\n\n(0,_modules_modal__WEBPACK_IMPORTED_MODULE_0__[\"default\"])();\n(0,_modules_menu__WEBPACK_IMPORTED_MODULE_1__[\"default\"])();\n(0,_modules_slider__WEBPACK_IMPORTED_MODULE_2__[\"default\"])();\n\n\n//# sourceURL=webpack://finalprojectgloacademyjavascript/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/modal */ \"./src/modules/modal.js\");\n/* harmony import */ var _modules_menu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/menu */ \"./src/modules/menu.js\");\n/* harmony import */ var _modules_slider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/slider */ \"./src/modules/slider.js\");\n/* harmony import */ var _modules_accordeon__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/accordeon */ \"./src/modules/accordeon.js\");\n\n\n\n\n\n(0,_modules_modal__WEBPACK_IMPORTED_MODULE_0__[\"default\"])();\n(0,_modules_menu__WEBPACK_IMPORTED_MODULE_1__[\"default\"])();\n(0,_modules_slider__WEBPACK_IMPORTED_MODULE_2__[\"default\"])();\n(0,_modules_accordeon__WEBPACK_IMPORTED_MODULE_3__[\"default\"])();\n\n\n//# sourceURL=webpack://finalprojectgloacademyjavascript/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/modules/accordeon.js":
+/*!**********************************!*\
+  !*** ./src/modules/accordeon.js ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst accordeon = () => {\n  const elements = document.querySelectorAll(\".accordeon .element\");\n\n  elements.forEach((element) => {\n    const title = element.querySelector(\".title\");\n    const content = element.querySelector(\".element-content\");\n\n    title.addEventListener(\"click\", () => {\n      elements.forEach((el) => {\n        if (el !== element) {\n          el.classList.remove(\"active\");\n          el.querySelector(\".element-content\").style.display = \"none\";\n        }\n      });\n\n      element.classList.toggle(\"active\");\n      if (element.classList.contains(\"active\")) {\n        content.style.display = \"block\";\n      } else {\n        content.style.display = \"none\";\n      }\n    });\n  });\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (accordeon);\n\n\n//# sourceURL=webpack://finalprojectgloacademyjavascript/./src/modules/accordeon.js?");
 
 /***/ }),
 
@@ -36,7 +46,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \*****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst menu = () => {\n  document.addEventListener(\"DOMContentLoaded\", () => {\n    const topMenuLinks = document.querySelectorAll(\".top-menu a\");\n\n    topMenuLinks.forEach((link) => {\n      link.addEventListener(\"click\", (e) => {\n        e.preventDefault();\n\n        const targetId = link.getAttribute(\"href\");\n        const targetElement = document.querySelector(targetId);\n        if (targetElement) {\n          targetElement.scrollIntoView({\n            behavior: \"smooth\",\n            block: \"start\",\n          });\n        }\n      });\n    });\n  });\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (menu);\n\n\n//# sourceURL=webpack://finalprojectgloacademyjavascript/./src/modules/menu.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst menu = () => {\n  const topMenuLinks = document.querySelectorAll(\".top-menu a\");\n\n  topMenuLinks.forEach((link) => {\n    link.addEventListener(\"click\", (e) => {\n      e.preventDefault();\n\n      const targetId = link.getAttribute(\"href\");\n      const targetElement = document.querySelector(targetId);\n      if (targetElement) {\n        targetElement.scrollIntoView({\n          behavior: \"smooth\",\n          block: \"start\",\n        });\n      }\n    });\n  });\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (menu);\n\n\n//# sourceURL=webpack://finalprojectgloacademyjavascript/./src/modules/menu.js?");
 
 /***/ }),
 
