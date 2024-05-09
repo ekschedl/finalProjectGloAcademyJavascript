@@ -1256,7 +1256,16 @@ video#video_background {
 
   .swiper-button-next, .swiper-button-prev {
     position: absolute;
-    top: 105% !important}
+    top: 105% !important;
+  }
+  .swiper-button-prev{
+	left: var(--swiper-navigation-sides-offset, 45%)!important;
+	right:auto}
+
+	.swiper-button-next {
+	right: var(--swiper-navigation-sides-offset, 45%)!important;
+	left:auto}
+		
 
 	.swiper-pagination-progressbar .swiper-pagination-progressbar-fill{
 		background-color: green !important;
