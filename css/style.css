@@ -296,6 +296,10 @@ a.absolute {
 #responseMessage .modal-content.error {
 	color: #2fab6d;
 }
+/* #responseMessage .modal-content {
+	display: none;
+
+  } */
 .box {
 	display: none;
 }

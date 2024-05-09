@@ -1,11 +1,7 @@
 const sendForm = (formId) => {
   const form = document.querySelector(`form[name="${formId}"]`);
-  const statusBlock = document
-    .getElementById("responseMessage")
-    .querySelector(".modal-content");
-  const submitButton = form.querySelector(".button.feedback");
 
-  const loadText = "    Загрузка...";
+  const loadText = "Загрузка...";
   const errorText = "Ошибка";
   const successText = "Спасибо! Наш менеджер свяжется с Вами!";
 
@@ -65,29 +61,40 @@ const sendForm = (formId) => {
       formBody[key] = val;
     });
 
+    const statusBlock = document.createElement("div");
+    statusBlock.classList.add("modal-content");
+
     if (validate(formElements)) {
+      statusBlock.textContent = loadText;
+      statusBlock.style.display = "block";
+
+      const submitButton = form.querySelector('input[type="submit"]');
+      submitButton.style.display = "none";
+
       sendData(formBody)
         .then((data) => {
           statusBlock.textContent = successText;
-          formElements.forEach((input) => {
-            input.value = "";
-          });
+          form.reset();
+
           setTimeout(() => {
-            statusBlock.innerHTML = "";
+            statusBlock.style.display = "none";
+
+            submitButton.style.display = "inline-block";
           }, 3000);
         })
         .catch((error) => {
           statusBlock.textContent = errorText;
           setTimeout(() => {
-            statusBlock.innerHTML = "";
+            statusBlock.style.display = "none";
+
+            submitButton.style.display = "inline-block";
           }, 3000);
         });
     } else {
-      alert("Данные не валидны");
-      setTimeout(() => {
-        statusBlock.innerHTML = "";
-      }, 3000);
+      statusBlock.textContent = "Данные не валидны";
     }
+
+    form.appendChild(statusBlock);
   };
 
   try {
@@ -101,8 +108,6 @@ const sendForm = (formId) => {
   } catch (error) {
     console.log(error.message);
   }
-
-  form.appendChild(statusBlock);
 };
 
 export default sendForm;
