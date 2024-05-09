@@ -7,6 +7,9 @@ const modal = () => {
   const modalCallback = document.querySelector(".modal-callback");
   const buttonServices = document.querySelector(".button-services");
   const colSmFirstElement = document.querySelector(".col-sm-4.first");
+  const elementImgWrappers = document.querySelectorAll(
+    ".services-section .element .img-wrapper"
+  );
 
   const openModal = () => {
     modalCallback.style.display = "block";
@@ -33,6 +36,10 @@ const modal = () => {
   closeButton.addEventListener("click", closeModal);
 
   modalOverlay.addEventListener("click", closeModal);
+
+  elementImgWrappers.forEach((wrapper) => {
+    wrapper.parentElement.addEventListener("click", openModal);
+  });
 };
 
 export default modal;
