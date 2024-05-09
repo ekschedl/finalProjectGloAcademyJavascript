@@ -16,7 +16,7 @@
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/modal */ \"./src/modules/modal.js\");\n/* harmony import */ var _modules_menu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/menu */ \"./src/modules/menu.js\");\n/* harmony import */ var _modules_slider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/slider */ \"./src/modules/slider.js\");\n/* harmony import */ var _modules_accordeon__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/accordeon */ \"./src/modules/accordeon.js\");\n\n\n\n\n\n(0,_modules_modal__WEBPACK_IMPORTED_MODULE_0__[\"default\"])();\n(0,_modules_menu__WEBPACK_IMPORTED_MODULE_1__[\"default\"])();\n(0,_modules_slider__WEBPACK_IMPORTED_MODULE_2__[\"default\"])();\n(0,_modules_accordeon__WEBPACK_IMPORTED_MODULE_3__[\"default\"])();\n\n\n//# sourceURL=webpack://finalprojectgloacademyjavascript/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/modal */ \"./src/modules/modal.js\");\n/* harmony import */ var _modules_menu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/menu */ \"./src/modules/menu.js\");\n/* harmony import */ var _modules_slider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/slider */ \"./src/modules/slider.js\");\n/* harmony import */ var _modules_accordeon__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/accordeon */ \"./src/modules/accordeon.js\");\n/* harmony import */ var _modules_carousel__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/carousel */ \"./src/modules/carousel.js\");\n/* harmony import */ var _modules_up__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/up */ \"./src/modules/up.js\");\n\n\n\n\n\n\n\n(0,_modules_modal__WEBPACK_IMPORTED_MODULE_0__[\"default\"])();\n(0,_modules_menu__WEBPACK_IMPORTED_MODULE_1__[\"default\"])();\n(0,_modules_slider__WEBPACK_IMPORTED_MODULE_2__[\"default\"])();\n(0,_modules_accordeon__WEBPACK_IMPORTED_MODULE_3__[\"default\"])();\n(0,_modules_carousel__WEBPACK_IMPORTED_MODULE_4__[\"default\"])();\n(0,_modules_up__WEBPACK_IMPORTED_MODULE_5__[\"default\"])();\n\n\n//# sourceURL=webpack://finalprojectgloacademyjavascript/./src/index.js?");
 
 /***/ }),
 
@@ -27,6 +27,16 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _mod
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst accordeon = () => {\n  const elements = document.querySelectorAll(\".accordeon .element\");\n\n  elements.forEach((element) => {\n    const title = element.querySelector(\".title\");\n    const content = element.querySelector(\".element-content\");\n\n    title.addEventListener(\"click\", () => {\n      elements.forEach((el) => {\n        if (el !== element) {\n          el.classList.remove(\"active\");\n          el.querySelector(\".element-content\").style.display = \"none\";\n        }\n      });\n\n      element.classList.toggle(\"active\");\n      if (element.classList.contains(\"active\")) {\n        content.style.display = \"block\";\n      } else {\n        content.style.display = \"none\";\n      }\n    });\n  });\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (accordeon);\n\n\n//# sourceURL=webpack://finalprojectgloacademyjavascript/./src/modules/accordeon.js?");
+
+/***/ }),
+
+/***/ "./src/modules/carousel.js":
+/*!*********************************!*\
+  !*** ./src/modules/carousel.js ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst carousel = () => {};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (carousel);\n\n\n//# sourceURL=webpack://finalprojectgloacademyjavascript/./src/modules/carousel.js?");
 
 /***/ }),
 
@@ -67,6 +77,16 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst slider = () => {\n  const slides = document.querySelectorAll(\".top-slider .item.relative\");\n  const dots = document.querySelectorAll(\".slick-dots .dot\");\n  const sliderContainer = document.querySelector(\".top-slider\");\n\n  let currentSlide = 0;\n  let intervalId;\n\n  const showSlide = (index) => {\n    slides.forEach((slide, i) => {\n      if (i === index) {\n        slide.style.display = \"block\";\n      } else {\n        slide.style.display = \"none\";\n      }\n    });\n    activateDot(index);\n  };\n\n  const nextSlide = () => {\n    currentSlide = (currentSlide + 1) % slides.length;\n    showSlide(currentSlide);\n  };\n\n  const createDots = () => {\n    dots.forEach((dot, index) => {\n      dot.addEventListener(\"click\", (e) => {\n        e.preventDefault();\n        currentSlide = index;\n        showSlide(currentSlide);\n        resetInterval();\n      });\n    });\n  };\n\n  const activateDot = (index) => {\n    dots.forEach((dot, i) => {\n      dot.classList.toggle(\"slick-active\", i === index);\n    });\n  };\n\n  const startAutoSlide = () => {\n    intervalId = setInterval(nextSlide, 3000);\n  };\n\n  const resetInterval = () => {\n    clearInterval(intervalId);\n    startAutoSlide();\n  };\n\n  sliderContainer.addEventListener(\"mouseenter\", () => {\n    clearInterval(intervalId);\n  });\n\n  sliderContainer.addEventListener(\"mouseleave\", () => {\n    resetInterval();\n  });\n\n  showSlide(currentSlide);\n  createDots();\n  startAutoSlide();\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (slider);\n\n\n//# sourceURL=webpack://finalprojectgloacademyjavascript/./src/modules/slider.js?");
+
+/***/ }),
+
+/***/ "./src/modules/up.js":
+/*!***************************!*\
+  !*** ./src/modules/up.js ***!
+  \***************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst up = () => {\n  window.addEventListener(\"scroll\", () => {\n    const up = document.querySelector(\".up\");\n    const servicesSection = document.querySelector(\"#services\");\n    if (window.scrollY > servicesSection.offsetTop) {\n      up.style.display = \"block\";\n    } else {\n      up.style.display = \"none\";\n    }\n  });\n\n  document.querySelector(\".up\").addEventListener(\"click\", () => {\n    window.scrollTo({\n      top: 0,\n      behavior: \"smooth\",\n    });\n  });\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (up);\n\n\n//# sourceURL=webpack://finalprojectgloacademyjavascript/./src/modules/up.js?");
 
 /***/ })
 
