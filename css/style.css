@@ -1085,6 +1085,8 @@ video#video_background {
 .services-arrow {
 	display: flex;
 	justify-content: center;
+
+
 }
 
 .arrow-right,
@@ -1247,3 +1249,18 @@ video#video_background {
 	}
 }
 /**** /. services section *****/
+.swiper-button-prev:after,
+.swiper-button-next:after {
+	color: black !important; 
+  }
+
+  .swiper-button-next, .swiper-button-prev {
+    position: absolute;
+    top: 105% !important}
+
+	.swiper-pagination-progressbar .swiper-pagination-progressbar-fill{
+		background-color: green !important;
+	}
+	.swiper {
+		
+		overflow: unset !important}
