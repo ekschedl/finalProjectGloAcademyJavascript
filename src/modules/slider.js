@@ -6,6 +6,12 @@ const slider = () => {
   let currentSlide = 0;
   let intervalId;
 
+  const activateDot = (index) => {
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("slick-active", i === index);
+    });
+  };
+
   const showSlide = (index) => {
     slides.forEach((slide, i) => {
       if (i === index) {
@@ -21,6 +27,14 @@ const slider = () => {
     currentSlide = (currentSlide + 1) % slides.length;
     showSlide(currentSlide);
   };
+  const startAutoSlide = () => {
+    intervalId = setInterval(nextSlide, 3000);
+  };
+
+  const resetInterval = () => {
+    clearInterval(intervalId);
+    startAutoSlide();
+  };
 
   const createDots = () => {
     dots.forEach((dot, index) => {
@@ -31,21 +45,6 @@ const slider = () => {
         resetInterval();
       });
     });
-  };
-
-  const activateDot = (index) => {
-    dots.forEach((dot, i) => {
-      dot.classList.toggle("slick-active", i === index);
-    });
-  };
-
-  const startAutoSlide = () => {
-    intervalId = setInterval(nextSlide, 3000);
-  };
-
-  const resetInterval = () => {
-    clearInterval(intervalId);
-    startAutoSlide();
   };
 
   sliderContainer.addEventListener("mouseenter", () => {
