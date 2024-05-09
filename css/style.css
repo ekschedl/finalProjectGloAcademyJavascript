@@ -1249,22 +1249,25 @@ video#video_background {
 	}
 }
 /**** /. services section *****/
-.swiper-button-prev:after,
-.swiper-button-next:after {
-	color: black !important; 
-  }
+/**** /swiper style extra *****/
+	.swiper-button-prev:after,
+	.swiper-button-next:after {
+		color: black !important; 
+}
 
-  .swiper-button-next, .swiper-button-prev {
-    position: absolute;
-    top: 105% !important;
-  }
-  .swiper-button-prev{
-	left: var(--swiper-navigation-sides-offset, 45%)!important;
-	right:auto}
+  	.swiper-button-next, .swiper-button-prev {
+   		 position: absolute;
+   		 top: 105% !important;
+}
+ 	 .swiper-button-prev{
+		left: var(--swiper-navigation-sides-offset, 45%)!important;
+		right:auto
+}
 
 	.swiper-button-next {
-	right: var(--swiper-navigation-sides-offset, 45%)!important;
-	left:auto}
+		right: var(--swiper-navigation-sides-offset, 45%)!important;
+		left:auto
+}
 		
 
 	.swiper-pagination-progressbar .swiper-pagination-progressbar-fill{
