@@ -6,7 +6,6 @@ const modal = () => {
   const modalOverlay = document.querySelector(".modal-overlay");
   const modalCallback = document.querySelector(".modal-callback");
   const buttonServices = document.querySelector(".button-services");
-  const colSmFirstElement = document.querySelector(".col-sm-4.first");
   const elementImgWrappers = document.querySelectorAll(
     ".services-section .element .img-wrapper"
   );
@@ -30,8 +29,6 @@ const modal = () => {
   });
 
   buttonServices.addEventListener("click", openModal);
-
-  colSmFirstElement.addEventListener("click", openModal);
 
   closeButton.addEventListener("click", closeModal);
 
